@@ -14,42 +14,63 @@ require 'Classes/Guerrier.php';
 	<h1>FIGHT</h1>
 	<?php 
 
-<<<<<<< HEAD
+
 		
-		$monCombattantA = new Personnage(/*Nom*/"Eva",100/*Vie*/, /*Force*/rand(10,400));
+		$monCombattantA = new Personnage(/*Nom*/"Eva",100/*Vie*/, /*Force*/rand(10,100));
 		$monCombattantA->recap();
 
-		$monCombattantB = new Personnage(/*Nom*/"Bob", /*Vie*/100, /*Force*/rand(10,400));
+		$monCombattantB = new Personnage(/*Nom*/"Bob", /*Vie*/100, /*Force*/rand(10,100));
 		$monCombattantB->recap();
 
 
-		$monGuerrier = new Guerrier(/*Nom*/"Sophie",/*Vie*/100,/*Force*/rand(10,400), /*BonusVie*/35, /*BonusForce*/-20);
+		$monGuerrier = new Guerrier(/*Nom*/"Sophie",/*Vie*/100,/*Force*/rand(10,100), /*BonusVie*/35, /*BonusForce*/-20);
 		$monGuerrier->recap();
+
+		/*
 
 		$monCombattantA->coup($monGuerrier);
 		$monGuerrier->coup($monCombattantB);
-		$monGuerrier->coup($monCombattantA);
+		$monCombattantB->coup($monCombattantA);
 		
-=======
-		$monCombattantA = new Personnage("Eva",/*Vie*/ 100, /*Force*/200);
-		$monCombattantA->recap();
-
-		$monCombattantB = new Personnage("Bob", /*Vie*/100, /*Force*/200);
-		$monCombattantB->recap();
-
-
-		$monGuerrier = new Guerrier(/*Nom*/"Sophie",/*Vie*/300,/*Force*/40, /*BonusVie*/35, /*BonusForce*/0);
-		$monGuerrier->recap();
-
-		$monCombattantA->coup($monGuerrier);
->>>>>>> master
-
 
 		$monCombattantA->recap();
 		$monCombattantB->recap();
 		$monGuerrier->recap();
+
+		*/
+
+
+
+
+
+		$arene = [$monCombattantA, $monCombattantB, $monGuerrier]; //tableau contennant les combatents
+
+		while(sizeof($arene) != 1){
+			$i = rand(0, sizeof($arene)-1);
+			$j = rand(0, sizeof($arene)-1);
+
+			if($i != $j){ //empeche un combatent de se suicider
+
+				$firstFighter 	= $arene[$i];  //Combat aléatoire entre deux personnages
+				$secondFighter 	= $arene[$j];
+
+
+				echo '----- ' . $firstFighter->getNom() . ' va démonter ' . $secondFighter->getNom() . ' -----<br><br>';
+
+				//unset($arene[$i]);
+				array_splice($arene, $j, 1);
+
+				$firstFighter->coup($secondFighter);
+				if($secondFighter->getVie() > 0){
+					array_push($arene, $secondFighter);
+				}
+
+				$secondFighter->recap();
+			}
+		}
 
 	 ?>
+
 
 </body>
 </html>

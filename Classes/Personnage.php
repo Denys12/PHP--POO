@@ -25,11 +25,11 @@ class Personnage{	//Création d'une classe
 
 	public function setVie($vie){
 		if($vie >= 100){
-			echo "you win<br>";
+			
 
 		}else if($vie < 0){
 			$vie = 0;
-			echo "You are dead <br>";
+			echo $this->getNom() . "is dead <br><br>";
 		}
 
 		$this->vie = $vie;
@@ -74,7 +74,7 @@ class Personnage{	//Création d'une classe
 	public function coup(Personnage $personnageASaluer){
 		echo "<br><br>------------------------------------<br><br>";
 
-		echo $this->getNom() . " vient de giffler " . $personnageASaluer->getNom() . "<br>";
+		echo $this->getNom() . " vient de mettre un coups à " . $personnageASaluer->getNom() . "<br>";
 
 		$viePerso = $personnageASaluer->getVie();
 
