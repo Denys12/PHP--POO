@@ -7,7 +7,7 @@ class Guerrier extends Personnage{ // création de l'héritage
 	public function __construct($nom, $vie, $force, $bonusPv, $bonusAttaque){
 		parent::__construct($nom, $vie, $force); // recupération des variables du parent
 
-		$this->setBonusPv($bonusPv); // attribu des nouvelles stats de la classe fille/ création du bonus
+		$this->setBonusPv($bonusPv); // attribut des nouvelles stats de la classe fille/ création du bonus
 		$this->setBonusattaque($bonusAttaque); // idem
 	}
 	public function setbonusPV($bonusPV){ // attribution du bonus de pv uniquement pour le guerrier 

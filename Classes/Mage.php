@@ -1,5 +1,5 @@
 <?php 
-class Guerrier extends Personnage{ // création de l'héritage
+class Mage extends Personnage{ // création de l'héritage
 	protected $bonusMagie;
 
 
