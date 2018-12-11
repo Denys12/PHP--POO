@@ -24,10 +24,12 @@ class Personnage{	//Création d'une classe
 
 
 	public function setVie($vie){
-		if($vie > 100){
+		if($vie >= 100){
+			echo "you win<br>";
 
 		}else if($vie < 0){
 			$vie = 0;
+			echo "You are dead <br>";
 		}
 
 		$this->vie = $vie;
@@ -52,21 +54,32 @@ class Personnage{	//Création d'une classe
 	}
 
 	public function recap(){ //retour des informations du personnage
-		echo "----- INFO" . $this->getNom() . " ----- <br>";
+		echo "----- INFO " . $this->getNom() . " ----- <br>";
 		echo $this->getNom() . " a " . $this->getVie() . ' points de vie <br>';
 	}
 
-	public function baffer(Personnage $personnageASaluer){
-		echo "<br><br>-----<br><br>";
+	/*public function baffer(Personnage $personnageASaluer){
+		echo "<br><br>------------------------------------<br><br>";
 
-		echo $this->getNom() . " vient de giffler " . $personnageASaluer->getNom();
+		echo $this->getNom() . " vient de giffler " . $personnageASaluer->getNom() . "<br>";
 
 		$viePerso = $personnageASaluer->getVie();
 
-		$personnageASaluer->setVie($viePerso - 10);
+		//$personnageASaluer->setVie($viePerso - 50);
+
+
 		
 	}
+*/
+	public function coup(Personnage $personnageASaluer){
+		echo "<br><br>------------------------------------<br><br>";
 
+		echo $this->getNom() . " vient de giffler " . $personnageASaluer->getNom() . "<br>";
+
+		$viePerso = $personnageASaluer->getVie();
+
+		$personnageASaluer->setVie($viePerso -  $this->force);
+		 }
 
 }
 
