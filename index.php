@@ -1,7 +1,7 @@
 <?php
 
 require 'Classes/Personnage.php';
-
+require 'Classes/Guerrier.php'; 
 
 ?>
 
@@ -14,16 +14,22 @@ require 'Classes/Personnage.php';
 
 	<?php 
 
-		$monCombattantA = new Personnage("Bob", 90, 200);
+		$monCombattantA = new Personnage("Eva",/*Vie*/ 100, /*Force*/200);
 		$monCombattantA->recap();
 
-		$monCombattantB = new Personnage("Anna", 90, 200);
+		$monCombattantB = new Personnage("Bob", /*Vie*/100, /*Force*/200);
 		$monCombattantB->recap();
 
 
-		$monCombattantA->baffer($monCombattantB);
+		$monGuerrier = new Guerrier(/*Nom*/"Sophie",/*Vie*/300,/*Force*/40, /*BonusVie*/35, /*BonusForce*/0);
+		$monGuerrier->recap();
 
+		$monCombattantA->coup($monGuerrier);
+
+
+		$monCombattantA->recap();
 		$monCombattantB->recap();
+		$monGuerrier->recap();
 
 	 ?>
 

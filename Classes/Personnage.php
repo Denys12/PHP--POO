@@ -56,17 +56,28 @@ class Personnage{	//Création d'une classe
 		echo $this->getNom() . " a " . $this->getVie() . ' points de vie <br>';
 	}
 
-	public function baffer(Personnage $personnageASaluer){
-		echo "<br><br>-----<br><br>";
+	/*public function baffer(Personnage $personnageASaluer){
+		echo "<br><br>------------------------------------<br><br>";
 
-		echo $this->getNom() . " vient de giffler " . $personnageASaluer->getNom();
+		echo $this->getNom() . " vient de giffler " . $personnageASaluer->getNom() . "<br>";
 
 		$viePerso = $personnageASaluer->getVie();
 
-		$personnageASaluer->setVie($viePerso - 10);
+		//$personnageASaluer->setVie($viePerso - 50);
+
+
 		
 	}
+*/
+	public function coup(Personnage $personnageASaluer){
+		echo "<br><br>------------------------------------<br><br>";
 
+		echo $this->getNom() . " vient de giffler " . $personnageASaluer->getNom() . "<br>";
+
+		$viePerso = $personnageASaluer->getVie();
+
+		$personnageASaluer->setVie($viePerso -  $this->force);
+		 }
 
 }
 
