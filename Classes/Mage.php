@@ -25,18 +25,20 @@ class Mage extends Personnage{ // création de l'héritage
 
 		switch($rand){ //créer le premier sort
 			case 1:
-				echo "Boule de feu";
+				echo $this->getNom() ." lance une boule de feu sur " . ($persoAttaque->getNom()) .".<br>";
 				$degat = 3 * $this->force;
 				break;
 			case 2:
-				echo "Tornade";
+				echo $this->getNom() ." lance une tornade sur ". ($persoAttaque->getNom()).".<br>";
 				$degat = 4;
 				break;
 			case 3:
-				echo $this->getNom() . "vien de soingner son adversaire, quelle erreur!";
+				echo $this->getNom() . " vien de soingner son adversaire, quelle erreur! <br>";
 				$degat = -5;
 				break;
 		}
+
+		$this->recapApresAttaque($persoAttaque);
 
 		$persoAttaque->setVie($persoAttaque->getVie() - $degat);
 	}

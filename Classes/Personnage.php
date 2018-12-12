@@ -24,12 +24,9 @@ class Personnage{	//Création d'une classe
 
 
 	public function setVie($vie){
-		if($vie >= 100){
-			
-
-		}else if($vie < 0){
+		if($vie < 0){
 			$vie = 0;
-			echo $this->getNom() . " est mort <br><br>";
+			echo " ".$this->getNom() . " est mort(e) <br><br>";
 		}
 
 		$this->vie = $vie;
@@ -76,15 +73,25 @@ class Personnage{	//Création d'une classe
 	public function coup($persoAttaque){
 		
 
-		echo $this->getNom() . " vient de mettre un coups à " . $persoAttaque->getNom() . "<br>";
+		echo " ".$this->getNom() . " vas de mettre un coups à " . $persoAttaque->getNom() . "<br>";
 
-			echo $this->getNom() . " a " . $this->getVie() . ' points de vie <br>';
 
-			echo $this->getNom() . " a mis " . $this->getForce() . ' points de dommage <br>';
+		$this->recapApresAttaque($persoAttaque);
 
 		$viePerso = $persoAttaque->getVie();
 
 		$persoAttaque->setVie($viePerso -  $this->force);
+	}
+
+	protected function recapApresAttaque($persoAttaque, $degat = null){
+
+		if($degat == null){
+			$degat = $this->getForce();
+		}
+
+		echo $persoAttaque->getNom() . " a " . $persoAttaque->getVie() . ' points de vie <br>';
+
+		echo $this->getNom() . " a mis " . $degat . ' points de dommage <br>';
 	}
 
 }

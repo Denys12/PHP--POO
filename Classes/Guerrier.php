@@ -20,6 +20,20 @@ class Guerrier extends Personnage{ // création de l'héritage
 		$this->force = $this->force + $bonusAttaque;
 	} 
 
+//test
+	public function setForce($force){
+		if($force + $this->getbonusAttaque() < 0){
+			$this->force = 0;
+
+		}else if($force == 0){
+			$this->setBonusAttaque(0);
+		}
+
+		$this->force = $force;
+	}
+
+//test
+
 	public function getbonusPV(){ // recupération du bonus
 		return $this->bonusPV;
 	}

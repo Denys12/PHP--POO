@@ -75,12 +75,9 @@ require 'Classes/Archer.php';
 			}
 		}
 
-			  echo $arene[0]->getNom() . ' Win';
+			  echo $arene[0]->getNom() . '<br><br>----- Win!!! -----';
 
 	
-	
-		
-
 	 ?>
 
 
