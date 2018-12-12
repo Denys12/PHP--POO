@@ -1,3 +1,25 @@
+<?php
+
+require 'Classes/Personnage.php';
+require 'Classes/Guerrier.php'; 
+require 'Classes/Mage.php'; 
+require 'Classes/Archer.php'; 
+
+		
+		$monCombattantA = new Personnage("Eva",100, rand(10,100));
+
+		$monCombattantB = new Personnage("Bob", 100, rand(10,100));
+
+		// Nom, Vie, Force, BonusVie, BonusForce
+		$monGuerrier = new Guerrier("Sophie",100, rand(10,100), 35, -20);
+
+		$monMage = new Mage("Gandalf",700,rand(1,2), 0, 20);
+
+		$monArcher = new Archer("Jean",100,rand(30,100), -30, -20, 10, 20);	
+
+		$arene = [$monCombattantA, $monCombattantB, $monGuerrier, $monMage, $monArcher];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,46 +28,25 @@
         <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-	<h1>Dans une galaxie for for lointaine</h1>
+	<h1>Dans une galaxie fort fort lointaine</h1>
+	<?php
+		echo "<p>Bienvenu dans l'arène ! Aujourd'hui ";
+		foreach($arene as $combattant): //mette chaque personnages de l'arène dans la variable combattant
+			echo $combattant->getNom() . ', ';
+		//affiche le nom de chaque combattant
+		endforeach;
+
+		echo 'vont combattrent. Faites vos jeux.</p>';
+
+		foreach($arene as $combattant):
+			echo '<br>';
+			echo $combattant->recap();
+			//affiche la vie de chaque combattant
+		endforeach
+
+	?>   
 	<?php 
-
-
-require 'Classes/Personnage.php';
-require 'Classes/Guerrier.php'; 
-require 'Classes/Mage.php'; 
-
-		
-		$monCombattantA = new Personnage(/*Nom*/"Eva",100/*Vie*/, /*Force*/rand(10,100));
-		$monCombattantA->recap();
-
-		$monCombattantB = new Personnage(/*Nom*/"Bob", /*Vie*/100, /*Force*/rand(10,100));
-		$monCombattantB->recap();
-
-
-		$monGuerrier = new Guerrier(/*Nom*/"Sophie",/*Vie*/100,/*Force*/rand(10,100), /*BonusVie*/35, /*BonusForce*/-20);
-		$monGuerrier->recap();
-
-		$monMage = new Mage(/*Nom*/"Gandalf",/*Vie*/1,/*Force*/rand(1,2), /*BonusVie*/0, /*BonusForce*/-20);
-		$monMage->recap();
-
-		/*
-
-		$monCombattantA->coup($monGuerrier);
-		$monGuerrier->coup($monCombattantB);
-		$monCombattantB->coup($monCombattantA);
-		
-
-		$monCombattantA->recap();
-		$monCombattantB->recap();
-		$monGuerrier->recap();
-
-		*/
-
-
-
-
-
-		$arene = [$monCombattantA, $monCombattantB, $monGuerrier, $monMage]; //tableau contennant les combatents
+		 //tableau contennant les combatents
 
 		while(sizeof($arene) != 1){
 			$i = rand(0, sizeof($arene)-1);
@@ -57,9 +58,8 @@ require 'Classes/Mage.php';
 				$secondFighter 	= $arene[$j];
 
 
-				echo '<br>----- ' . $firstFighter->getNom() . ' va démonter ' . $secondFighter->getNom() . ' -----<br>';
+				echo '<br>----- ' . $firstFighter->getNom() . ' va attaquer ' . $secondFighter->getNom() . ' -----<br>';
 
-				//unset($arene[$i]);
 				array_splice($arene, $j, 1);//suprime du tableau le combatent mort
 
 				$firstFighter->coup($secondFighter);
@@ -72,6 +72,9 @@ require 'Classes/Mage.php';
 		}
 
 			  echo $arene[0]->getNom() . ' Win';
+
+	
+	
 		
 
 	 ?>

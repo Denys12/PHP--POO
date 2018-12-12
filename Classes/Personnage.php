@@ -76,6 +76,10 @@ class Personnage{	//Création d'une classe
 
 		echo $this->getNom() . " vient de mettre un coups à " . $personnageASaluer->getNom() . "<br>";
 
+			echo $this->getNom() . " a " . $this->getVie() . ' points de vie <br>';
+
+			echo  "IL a mis " . $this->getForce() . ' points de dommage <br>';
+
 		$viePerso = $personnageASaluer->getVie();
 
 		$personnageASaluer->setVie($viePerso -  $this->force);
