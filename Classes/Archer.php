@@ -18,4 +18,25 @@ class Archer extends Personnage{ // création de l'héritage
         return $this->AttFleche;
     }
 
+    public function coup($persoAttaque){
+        $rand = rand(1,3); //choisie un sort aléatoire
+
+        switch($rand){ //créer le premier sort
+            case 1:
+                echo "Fleche en feu<br>";
+                $degat = 6 * $this->force;
+                break;
+            case 2:
+                echo "Deux fleches<br>";
+                $degat = 4;
+                break;
+            case 3:
+                echo $this->getNom() . "vien de se planter une flèche dans le pied, quelle erreur!<br>";
+                $degat = -15;
+                break;
+        }
+
+        $persoAttaque->setVie($persoAttaque->getVie() - $degat);
+    }
+
 }

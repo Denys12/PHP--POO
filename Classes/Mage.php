@@ -19,22 +19,26 @@ class Mage extends Personnage{ // création de l'héritage
 	public function getbonusMagie(){
 		return $this->bonusMagie;
 	}
-
-	public function jeterUnSort($perso){
+	//Liste de sort du mage
+	public function coup($persoAttaque){
 		$rand = rand(1,3); //choisie un sort aléatoire
 
 		switch($rand){ //créer le premier sort
 			case 1:
 				echo "Boule de feu";
-				$degat = 35;
+				$degat = 3 * $this->force;
 				break;
 			case 2:
 				echo "Tornade";
-				$degat = 40;
+				$degat = 4;
+				break;
+			case 3:
+				echo $this->getNom() . "vien de soingner son adversaire, quelle erreur!";
+				$degat = -5;
 				break;
 		}
 
-		$perso->setVie($Personnage->getVie - $force);
+		$persoAttaque->setVie($persoAttaque->getVie() - $degat);
 	}
 
 }
