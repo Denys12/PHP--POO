@@ -70,7 +70,15 @@ class Personnage{	//Création d'une classe
 		
 	}
 */
-	public function coup($persoAttaque){
+	public function jouer($persoAttaque){
+        if(rand(0, 200) > 150){
+            $this->prendreUnePotion();
+        }else {
+            $this->attaquer($persoAttaque);
+        }
+    }
+
+	public function attaquer/*=coup*/($persoAttaque){
 		
 
 		echo " ".$this->getNom() . " vas de mettre un coups à " . $persoAttaque->getNom() . "<br>";
@@ -99,7 +107,24 @@ class Personnage{	//Création d'une classe
 	}
 
 
+	public function prendreUnePotion(){
+        $this->setVie($this->getVie() + 30);
+
+        echo $this->getNom() . " vient de boire une potion.<br>" . $this->getNom() . " a " . $this->getVie() . 'points de vie <br>';
+    }
+
 }
+/*Test
+	protected function prendreUnePotion($perso){
+           $probaHeal = rand(1,10);
+           if ($probaHeal = 1){
+           	echo $this->getNom() . ' bois une potion';
+			$this->setVie($this->getVie() + 20);
+    	} 
+    }
+  }
+test*/
+
 
 
 ?>

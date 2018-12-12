@@ -7,11 +7,11 @@ require 'Classes/Archer.php';
 
 		
 		// Nom, Vie, Force, BonusVie, BonusForce
-		$monCombattantA = new Personnage("Eva",50, rand(10,100));
+		$monCombattantA = new Personnage("Eva",100, rand(10,100));
 
 		$monCombattantB = new Personnage("Bob", 100, rand(10,100));
 
-		$monGuerrier = new Guerrier("Sophie",150, rand(10,100), 35, -20);
+		$monGuerrier = new Guerrier("Sophie",100, rand(10,100), 35, -20);
 
 		$monMage = new Mage("Gandalf",200,0, 0, 20);
 
@@ -66,7 +66,7 @@ require 'Classes/Archer.php';
 
 				array_splice($arene, $j, 1);//suprime du tableau le combatent mort
 
-				$firstFighter->coup($secondFighter);
+				$firstFighter->jouer($secondFighter);
 				if($secondFighter->getVie() > 0){
 					array_push($arene, $secondFighter);
 				}

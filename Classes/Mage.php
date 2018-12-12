@@ -20,7 +20,7 @@ class Mage extends Personnage{ // création de l'héritage
 		return $this->bonusMagie;
 	}
 	//Liste de sort du mage
-	public function coup($persoAttaque){
+	public function attaquer($persoAttaque){
 		$rand = rand(1,3); //choisie un sort aléatoire
 
 		switch($rand){ //créer le premier sort
