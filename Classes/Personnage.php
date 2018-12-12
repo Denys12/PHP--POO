@@ -88,11 +88,16 @@ class Personnage{	//Création d'une classe
 		if($degat == null){
 			$degat = $this->getForce();
 		}
-
 		echo $persoAttaque->getNom() . " a " . $persoAttaque->getVie() . ' points de vie <br>';
+
+		if($degat >100){
+                echo "Coup CRITIQUE!!!!";
+            }
+		
 
 		echo $this->getNom() . " a mis " . $degat . ' points de dommage <br>';
 	}
+
 
 }
 
